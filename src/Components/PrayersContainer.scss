@@ -1,0 +1,49 @@
+.prayers-container {
+  margin-top: 1rem;
+}
+
+.prayer-card {
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.25rem !important;
+  border-radius: 100rem;
+  padding: 1rem;
+  font-size: 1em;
+  // font-weight: bold;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  
+  -webkit-tap-highlight-color: transparent;
+
+  &.m {
+    background-color: rgb(255, 145, 145);
+  }
+  &.o {
+    background-color: rgb(57, 255, 67);
+  }
+  &.d {
+    background-color: rgb(255, 194, 82);
+  }
+  &.n {
+    background-color: white;
+    color: black;
+    &.future {
+      background: rgba(255,255,255,0.1);
+      // border: white 2px solid;
+      color: white;
+      // cursor: default;
+      // border-radius: 0.5rem;
+    }
+  }
+  &.future {
+    cursor: default;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  &.o {
+    background-color: rgb(95, 255, 103) !important;
+  }
+}

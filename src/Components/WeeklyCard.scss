@@ -1,0 +1,88 @@
+.weekly-card {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #222;
+  color: white;
+  .title {
+    background-color: #333;
+    text-align: center;
+    border-radius: 100rem;
+    padding: 0.4rem;
+    font-size: 1.2rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    text-align: center;
+    margin: 1rem;
+  }
+
+  .status {
+    width: 10px;
+    height: 10px;
+    border-radius: 1rem;
+    margin: auto;
+    display: block;
+    &.m {
+      background-color: rgb(255, 145, 145);
+    }
+    &.o {
+      background-color: rgb(68, 255, 68);
+    }
+    &.d {
+      background-color: rgb(255, 194, 82);
+    }
+    &.n {
+      width: 5px;
+      height: 5px;
+      background-color: rgb(201, 201, 201);
+    }
+  }
+
+  .today {
+    background-color: #0051ff;
+    color: white;
+    border-radius: 100rem;
+  }
+
+  .prayerName {
+    text-align: right;
+    // height: 2rem;
+  }
+
+  .key {
+    display: flex;
+    justify-content: center;
+    .status {
+      display: inline-block;
+      margin-right: 0.5rem;
+    }
+    span + span {
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 512px) {
+  .weekly-card {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    .title {
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
+      margin: 1rem;
+    }
+    .day {
+      margin-bottom: 0.5rem;
+    }
+    .prayerName {
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: right;
+    }
+  }
+}
