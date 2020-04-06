@@ -1,7 +1,22 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { StateStore } from '../store';
-import store from 'store';
 import './Registration.scss';
+import { register } from '../Actions/UserActions';
+export const options = [
+  "Shia Ithna-Ansari",
+  "University of Islamic Sciences, Karachi",
+  "Islamic Society of North America",
+  "Muslim World League",
+  "Umm Al-Qura University, Makkah",
+  "Egyptian General Authority of Survey",
+  "Institute of Geophysics, University of Tehran",
+  "Gulf Region",
+  "Kuwait",
+  "Qatar",
+  "Majlis Ugama Islam Singapura, Singapore",
+  "Union Organization islamic de France",
+  "Diyanet İşleri Başkanlığı, Turkey",
+  "Spiritual Administration of Muslims of Russia"]
 
 export default function Registration() {
 
@@ -13,6 +28,10 @@ export default function Registration() {
     setFormState({ ...formState, ...obj });
   }
 
+  useEffect(() => {
+      navigator.geolocation.getCurrentPosition(gotPos);
+  }, [])
+
   const gotPos = async pos => {
     setLoading(true);
     formUpdated({ location: pos.coords });
@@ -23,40 +42,6 @@ export default function Registration() {
     formUpdated({ location: { ...pos.coords, city, country } });
     setLoading(false);
   }
-
-  const register = () => {
-    store.set("hasInitialised", true);
-    store.set("preferences", {
-      ...formState
-    });
-
-    const stati = [];
-    const temp = { Fajr: 'n', Zuhr: 'n', Asr: 'n', Maghrib: 'n', Isha: 'n' };
-    for (let i = 6; i >= 0; i--) {
-      stati.push({ ...temp })
-    }
-    stati[stati.length - 1].date = new Date().toLocaleDateString();
-
-    store.set("stati", stati);
-
-    dispatch({ type: "INITIALISE_SUCCESS", payload: { preferences: formState, stati } });
-  }
-
-  const options = [
-    "Shia Ithna-Ansari",
-    "University of Islamic Sciences, Karachi",
-    "Islamic Society of North America",
-    "Muslim World League",
-    "Umm Al-Qura University, Makkah",
-    "Egyptian General Authority of Survey",
-    "Institute of Geophysics, University of Tehran",
-    "Gulf Region",
-    "Kuwait",
-    "Qatar",
-    "Majlis Ugama Islam Singapura, Singapore",
-    "Union Organization islamic de France",
-    "Diyanet İşleri Başkanlığı, Turkey",
-    "Spiritual Administration of Muslims of Russia"]
 
   return (
     <div className="register-container">
@@ -71,11 +56,11 @@ export default function Registration() {
         <div>
           {loading ?
             <button className="dormant">loading..</button> :
-            <button onClick={() => navigator.geolocation.getCurrentPosition(gotPos)}>
+            <button className="dormant">
               {formState.location?.city ? (formState.location.city + ", " + formState.location.country) : "Give Location Access"}
             </button>
           }
-          {formState.location ? <button onClick={register}>Save</button> : null}
+          {formState.location ? <button onClick={() => register(dispatch, formState)}>Save</button> : null}
         </div>
       </div>
     </div>

@@ -52,8 +52,12 @@
       &:hover {
         background-color: #ddd;
       }
+      &.dormant {
+        border-radius: 0.5rem;
+      }
       &.dormant:hover {
         background-color: #eee;
+        cursor: unset;
       }
       &+button {
         margin-left: 1rem;

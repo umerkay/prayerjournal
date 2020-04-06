@@ -2,6 +2,32 @@
   width: 400px;
   background-color: white;
   padding: 1rem;
+  padding: 2rem;
+  text-align: center;
+  // font-weight: lighter;
+
+  .heading {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .preference {
+    margin-bottom: 0.5rem;
+    display: grid;
+    width: 100%;
+    gap: auto;
+    // justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 2.5fr;
+    label {
+      font-size: 1.3rem;
+      text-align: left;
+    }
+    .input {
+      // margin-left: 1rem;
+      width: 100%;
+    }
+  }
 }
 
 .settings-modal-overlay {

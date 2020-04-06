@@ -4,7 +4,7 @@ import './App.scss';
 import QuranCard from './Components/QuranCard';
 import GeneralCard from './Components/GeneralCard';
 import WeeklyCard from './Components/WeeklyCard';
-import PrayersContainer from './Components/PrayersContainer';
+import PrayersContainer, { timeGreater } from './Components/PrayersContainer';
 import SettingsModal from './Components/SettingsModal';
 import Clock from 'react-live-clock';
 import store from 'store';
@@ -22,31 +22,25 @@ function App() {
     <Registration></Registration>
   );
 
-  let days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-  const names = ['Fajr', 'Zuhr', 'Asr', 'Maghrib', 'Isha'];
-  const status = names.map(name => stati.map(status => status[name]));
-  const day = new Date().getDay();
-  const temp = days.splice(day + 1);
-  days = [...temp, ...days];
-
-  let data = { days, status, names,
-    times: ["3:05", "13:35", "17:03", "18:48", "20:46"],
+  let data = {
+    times: ["3:05", "13:02", "17:03", "18:48", "20:46"],
     sunrise: "6:13", sunset: "18:48", //once a month from server, reuse if still valid for location and month
     // location: preferences.location.city + ", " + preferences.location.country, // get from client
     currTime: (new Date().getHours()) + ":" + (new Date().getMinutes()),
   }
-
-  //if date now is not equal to the latest date in stati, shift and push to array, new date
-  //when initiate, fill stati with 'n' for all prayers as default data
-  //edit data as prayer stati are changed
-
+  let theme;
+  if (preferences.theme == "auto") {
+    theme = timeGreater(data.currTime, data.sunrise) && timeGreater(data.sunset, data.currTime) ? "light" : "dark";
+  } else {
+    theme = preferences.theme;
+  }
   return (
-    <div className="App">
+    <div className={`App ${theme}-theme`}>
       <button onClick={() => store.set("hasInitialised", false)}></button>
       <div style={{ color: "white" }} id="header"><h1>Prayer Journal</h1></div>
-      <SettingsModal toggle={setSettingsModal} modalIsOpen={settingsModalState}></SettingsModal>
+      {settingsModalState ? <SettingsModal toggle={setSettingsModal} modalIsOpen={settingsModalState}></SettingsModal> : null}
       <div className="main">
-        <WeeklyCard prayerData={data}></WeeklyCard>
+        <WeeklyCard></WeeklyCard>
         <PrayersContainer prayerData={data}></PrayersContainer>
       </div>
       <div className="side">

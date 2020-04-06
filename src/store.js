@@ -1,4 +1,4 @@
-import React, {createContext, useReducer} from 'react';
+import React, { createContext, useReducer } from 'react';
 import store from 'store';
 
 const initialState = {
@@ -9,7 +9,7 @@ const initialState = {
 const StateStore = createContext(initialState);
 const { Provider } = StateStore;
 
-const StateProvider = ( { children } ) => {
+const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case "INITIALISE_SUCCESS":
@@ -19,6 +19,21 @@ const StateProvider = ( { children } ) => {
           preferences: action.payload.preferences,
           stati: action.payload.stati
         };
+      case "SYNC_STATI_DATE":
+        return {
+          ...state,
+          stati: action.payload.stati
+        }
+      case "EDIT_PRAYER_STATUS":
+        return {
+          ...state,
+          stati: action.payload.stati
+        }
+      case "EDIT_PREFERENCES":
+        return {
+          ...state,
+          preferences: action.payload.preferences
+        }
     }
   }, initialState);
 

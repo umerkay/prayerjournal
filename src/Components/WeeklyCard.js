@@ -1,8 +1,24 @@
-import React from 'react'
-import './WeeklyCard.scss'
+import React, { useContext } from 'react';
+import { StateStore } from '../store';
+import store from 'store';
+import './WeeklyCard.scss';
+import { syncStatiDate } from '../Actions/UserActions';
 
 export default function WeeklyCard(props) {
-  let { prayerData } = props;
+  const { dispatch, state: { stati } } = useContext(StateStore);
+
+  let days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+  const names = ['Fajr', 'Zuhr', 'Asr', 'Maghrib', 'Isha'];
+
+  //if latest date in data is not today, add today's entry and remove first oldest entry
+  if (new Date().toLocaleDateString() != stati[stati.length - 1].date) {
+    syncStatiDate(dispatch, stati);
+  }
+
+  const status = names.map(name => stati.map(status => status[name])); //usable format
+  const day = new Date().getDay();
+  const temp = days.splice(day + 1);
+  days = [...temp, ...days]; //order day headings for last seven days
   /*
     missed m
     ontime o
@@ -10,14 +26,14 @@ export default function WeeklyCard(props) {
     nodata n
   */
   return (
-    <div className="card weekly-card">
-      <div className="title">This Week</div>
+    <div className="card weekly-card dark">
+      <div className="heading">This Week</div>
       <div className="grid">
         <span></span>
-        {prayerData.days.map((day, i) => (<span className={"day" + ((i == prayerData.days.length - 1) ? " today" : "")}>{day}</span>))}
-        {prayerData.status.map(status => (
-          [<span className="prayerName"><span>{prayerData.names[prayerData.status.indexOf(status)]}</span></span>,
-          status.map(char => (<span className={"status " + char}></span>))]
+        {days.map((day, i) => (<span className={"day" + ((i == days.length - 1) ? " today primary" : "")}>{day}</span>))}
+        {status.map(status2 => (
+          [<span className="prayerName"><span>{names[status.indexOf(status2)]}</span></span>,
+          status2.map(char => (<span className={"status " + char}></span>))]
         ))}
       </div>
       <div className="key">

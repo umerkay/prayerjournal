@@ -2,6 +2,25 @@
   width: 400px;
   background-color: white;
   padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .heading {
+    font-size: 1.5em;
+    margin-bottom: 2rem;
+    text-align: center;
+    .slct {
+      font-size: 1rem;
+      margin-right: 0.5rem;
+    }
+  }
+
+  .slct {
+    margin-bottom: 1rem;
+  }
 }
 
 .prayer-modal-overlay {

@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+.primary {
+  background-color: #0051ff !important;
+  transition-duration: 300ms;
+  color: white;
+  &.clickable:hover {    
+    background-color: #003dc2 !important;
+  }
+}
+
 button {
   border: none;
   outline: none;
@@ -14,7 +23,27 @@ button {
 }
 
 body {
-  background-color: #000;
+}
+
+.filler {
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 90%;
+  border-radius: 0.2rem;
+  height: 1rem;
+  display: block;
+  animation: growIn 1s ease-in;
+  margin: auto;
+}
+
+@keyframes growIn {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
 }
 
 .App {
@@ -24,6 +53,61 @@ body {
   font-family: Brandon Grotesque;
   align-items: center;
   padding: 3rem 0rem;
+
+  &.light-theme {
+    background-color: #ddd;
+    color: #111;
+
+    .btn,
+    .clickable {
+      background-color: white;
+      &:hover {
+        background-color: #eee;
+      }
+    }
+
+    .card {
+      background-color: white;
+      color: #111;
+
+      .heading {
+        background-color: #eee;
+        color: #111;
+      }
+    }
+  }
+  &.dark-theme {
+    background-color: black;
+    color: white;
+
+    .btn,
+    .clickable {
+      background-color: #222;
+      &:hover {
+        background-color: #333;
+      }
+    }
+
+    .card {
+      background-color: #111;
+      color: white;
+
+      .heading {
+        background-color: #eee;
+        color: #111;
+      }
+
+      &.dark {
+        background-color: #111;
+        color: white;
+
+        .heading {
+          background-color: #222;
+          color: white;
+        }
+      }
+    }
+  }
 
   .main {
     width: 400px;
@@ -38,7 +122,6 @@ body {
     width: 350px;
   }
 }
-
 
 @media screen and (max-width: 768px) and (min-width: 512px) {
   .App {
@@ -64,11 +147,12 @@ body {
       padding-bottom: 5rem !important;
       margin-top: 50vh !important;
     }
-    .main, .side {
+    .main,
+    .side {
       width: auto;
       padding: 0.5rem;
       margin-right: 0rem;
-      background-color: #000;
+      background-color: inherit;
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
       // border-radius: 1rem;
@@ -109,8 +193,14 @@ body {
 }
 
 @keyframes popin {
-  from { opacity: 0; transform: translateX(-50%) translateY(-50%) scale(0.8); }
-  to   { opacity: 1; transform: translateX(-50%) translateY(-50%) scale(1);}
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-50%) scale(1);
+  }
 }
 
 .modal-overlay {
@@ -127,20 +217,42 @@ body {
   border-radius: 1.25rem;
   padding: 2rem;
   text-align: left;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
 
   &.clock {
     display: block;
     font-size: 5em;
     text-align: center;
     border-radius: 1rem;
-    background-color: #000;
+    // background-color: #000;
     color: white;
     // padding: 1rem;
     border: 2px solid white;
     font-weight: lighter;
   }
 
-  &+.card {
+  & + .card {
     margin-top: 1rem;
+  }
+}
+
+.slct {
+  padding: 0.5rem;
+  border-radius: 100rem;
+  outline: none;
+  font-size: 1em;
+  width: 60%;
+}
+
+.btn {
+  font-size: 1.1em;
+  padding: 0.5rem 1rem;
+  border-radius: 100rem;
+  transition-duration: 300ms;
+  &.dormant:hover {
+    background-color: initial;
+  }
+  & + button {
+    margin-left: 1rem;
   }
 }
