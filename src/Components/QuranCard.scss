@@ -22,15 +22,15 @@
       padding: 0.5rem 1rem;
       border-radius: 1rem;
       font-weight: bold;
-      transition-duration: 500ms;
+      transition-duration: 300ms;
       margin-top: 1rem;
       text-decoration: none;
       display: inline-block;
       color: black;
 
       &.clickable:hover {
-        background-color: rgb(119, 97, 0);
-        color: white;
+        background-color: rgb(223, 182, 0);
+        // color: white;
       }
     }
   }

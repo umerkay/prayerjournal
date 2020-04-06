@@ -37,3 +37,9 @@ export const editPreferences = (dispatch, preferences) => {
   dispatch({ type: "EDIT_PREFERENCES", payload: { preferences: { ...preferences } } });
   store.set("preferences", preferences);
 }
+
+export const setTimings = (dispatch, timings) => {
+  timings.Zuhr = timings.Dhuhr;
+  dispatch({ type: "SET_TIMINGS", payload: { timings } });
+  store.set("timings", timings);
+}

@@ -5,5 +5,8 @@
   align-items: center;
   .loading {
     filter: brightness(0);
+    &.bright {
+      filter: brightness(100);
+    }
   }
 }

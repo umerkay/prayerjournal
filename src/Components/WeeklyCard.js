@@ -2,17 +2,23 @@ import React, { useContext } from 'react';
 import { StateStore } from '../store';
 import store from 'store';
 import './WeeklyCard.scss';
-import { syncStatiDate } from '../Actions/UserActions';
+import { syncStatiDate, editPrayerStatus } from '../Actions/UserActions';
+import { names } from '../Data';
 
 export default function WeeklyCard(props) {
   const { dispatch, state: { stati } } = useContext(StateStore);
 
   let days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-  const names = ['Fajr', 'Zuhr', 'Asr', 'Maghrib', 'Isha'];
+  let statuses = ['o', 'd', 'm', 'n'];
 
   //if latest date in data is not today, add today's entry and remove first oldest entry
   if (new Date().toLocaleDateString() != stati[stati.length - 1].date) {
     syncStatiDate(dispatch, stati);
+  }
+
+  const editStatus = (name, status, dayIndex) => {
+    status = statuses[(statuses.indexOf(status) + 1) % statuses.length];
+    editPrayerStatus(dispatch, stati, { [name]: status }, dayIndex);
   }
 
   const status = names.map(name => stati.map(status => status[name])); //usable format
@@ -33,7 +39,7 @@ export default function WeeklyCard(props) {
         {days.map((day, i) => (<span className={"day" + ((i == days.length - 1) ? " today primary" : "")}>{day}</span>))}
         {status.map(status2 => (
           [<span className="prayerName"><span>{names[status.indexOf(status2)]}</span></span>,
-          status2.map(char => (<span className={"status " + char}></span>))]
+          status2.map((char, i) => (<span className={"status " + char} onClick={() => editStatus(names[status.indexOf(status2)], char, i)}></span>))]
         ))}
       </div>
       <div className="key">

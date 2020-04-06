@@ -69,6 +69,12 @@ body {
     .card {
       background-color: white;
       color: #111;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+      transition-duration: 300ms;
+
+      &:hover {
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+      }
 
       .heading {
         background-color: #eee;
@@ -91,6 +97,12 @@ body {
     .card {
       background-color: #111;
       color: white;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+      transition-duration: 300ms;
+      
+      &:hover {
+        box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.5);
+      }
 
       .heading {
         background-color: #eee;
@@ -217,7 +229,6 @@ body {
   border-radius: 1.25rem;
   padding: 2rem;
   text-align: left;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
 
   &.clock {
     display: block;

@@ -4,7 +4,8 @@ import store from 'store';
 const initialState = {
   hasInitialised: store.get("hasInitialised"),
   preferences: store.get("preferences"),
-  stati: store.get("stati")
+  stati: store.get("stati"),
+  timings: store.get("timings"),
 };
 const StateStore = createContext(initialState);
 const { Provider } = StateStore;
@@ -33,6 +34,11 @@ const StateProvider = ({ children }) => {
         return {
           ...state,
           preferences: action.payload.preferences
+        }
+      case "SET_TIMINGS":
+        return {
+          ...state,
+          timings: action.payload.timings
         }
     }
   }, initialState);

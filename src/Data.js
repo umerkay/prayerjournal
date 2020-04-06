@@ -1,0 +1,1 @@
+export const names = ['Fajr', 'Zuhr', 'Asr', 'Maghrib', 'Isha'];

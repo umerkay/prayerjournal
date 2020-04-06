@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import './PrayerModal.scss';
+import { names } from '../Data';
 
 export default function PrayerModal({ modalIsOpen, toggle, save, prayerState }) {
-  const names = ['Fajr', 'Zuhr', 'Asr', 'Maghrib', 'Isha'];
   const [formData, setFormData] = useState({ ...prayerState });
 
   const setPrayerName = (e) => {
