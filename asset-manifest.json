@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/prayerjournal/static/css/main.afb4338b.chunk.css",
+    "main.css": "/prayerjournal/static/css/main.b784ee11.chunk.css",
     "main.js": "/prayerjournal/static/js/main.7376ebce.chunk.js",
     "main.js.map": "/prayerjournal/static/js/main.7376ebce.chunk.js.map",
     "runtime-main.js": "/prayerjournal/static/js/runtime-main.702abb5c.js",
@@ -8,9 +8,9 @@
     "static/js/2.97d5406f.chunk.js": "/prayerjournal/static/js/2.97d5406f.chunk.js",
     "static/js/2.97d5406f.chunk.js.map": "/prayerjournal/static/js/2.97d5406f.chunk.js.map",
     "index.html": "/prayerjournal/index.html",
-    "precache-manifest.4f77d784ee571155ea783cc01b492685.js": "/prayerjournal/precache-manifest.4f77d784ee571155ea783cc01b492685.js",
+    "precache-manifest.bb6fc377df110ffc6eabbd0b7112916b.js": "/prayerjournal/precache-manifest.bb6fc377df110ffc6eabbd0b7112916b.js",
     "service-worker.js": "/prayerjournal/service-worker.js",
-    "static/css/main.afb4338b.chunk.css.map": "/prayerjournal/static/css/main.afb4338b.chunk.css.map",
+    "static/css/main.b784ee11.chunk.css.map": "/prayerjournal/static/css/main.b784ee11.chunk.css.map",
     "static/js/2.97d5406f.chunk.js.LICENSE.txt": "/prayerjournal/static/js/2.97d5406f.chunk.js.LICENSE.txt",
     "static/media/loading.gif": "/prayerjournal/static/media/loading.7d02b50b.gif",
     "static/media/logo.svg": "/prayerjournal/static/media/logo.5d5d9eef.svg"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.702abb5c.js",
     "static/js/2.97d5406f.chunk.js",
-    "static/css/main.afb4338b.chunk.css",
+    "static/css/main.b784ee11.chunk.css",
     "static/js/main.7376ebce.chunk.js"
   ]
 }
