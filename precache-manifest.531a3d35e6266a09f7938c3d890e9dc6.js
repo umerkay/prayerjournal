@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ad40f09c3073b57f2db8c260618d9fd4",
+    "revision": "d77c2fedbb4692b3dbdd0603fe2f2fae",
     "url": "/prayerjournal/index.html"
   },
   {
-    "revision": "5cc18b30cadfec50c266",
-    "url": "/prayerjournal/static/css/main.8e1af7c2.chunk.css"
+    "revision": "c4a9566acf41619325cf",
+    "url": "/prayerjournal/static/css/main.84740cb6.chunk.css"
   },
   {
     "revision": "c016ce6cc798b3c52282",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/prayerjournal/static/js/2.7871ba53.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5cc18b30cadfec50c266",
+    "revision": "c4a9566acf41619325cf",
     "url": "/prayerjournal/static/js/main.3fc74f7c.chunk.js"
   },
   {
