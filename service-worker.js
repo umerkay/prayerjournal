@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/prayerjournal/precache-manifest.32ae9fb03c2d847597b5622fc39a38e2.js"
+  "/prayerjournal/precache-manifest.b37913c72d43c251a03a4b6a00cfb3d0.js"
 );
 
 self.addEventListener('message', (event) => {
