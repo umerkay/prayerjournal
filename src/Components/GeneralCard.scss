@@ -1,7 +1,7 @@
 .general-card {
   border-radius: 100rem;
-  padding: 1rem;
-  font-size: 1.6em;
+  padding: 0.75rem;
+  font-size: 1.4em;
   font-weight: lighter;
   text-align: center;
   transition-duration: 500ms;
@@ -9,5 +9,9 @@
   &.clickable:hover {
     // background-color: rgb(207, 207, 207);
     cursor: pointer;
+  }
+
+  span + span {
+    margin-left: 1rem;
   }
 }

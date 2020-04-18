@@ -19,7 +19,11 @@ const StateProvider = ({ children }) => {
           hasInitialised: true,
           preferences: action.payload.preferences,
           stati: action.payload.stati
-        };
+        }
+      case "INITIALISE_UNDO":
+        return {
+          hasInitialised: false
+        }
       case "SYNC_STATI_DATE":
         return {
           ...state,
@@ -40,6 +44,8 @@ const StateProvider = ({ children }) => {
           ...state,
           timings: action.payload.timings
         }
+      default:
+        return state
     }
   }, initialState);
 

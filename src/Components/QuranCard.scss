@@ -1,11 +1,38 @@
 .quran-card {
-  background-color: rgb(255, 255, 193) !important;
+  background: rgba(255, 255, 193, 1) !important;
+  // background: linear-gradient(
+  //   180deg,
+  //   rgb(255, 253, 163) 0%,
+  //   rgba(255, 255, 193, 1) 17%,
+  //   rgba(255, 255, 193, 1) 66%,
+  //   rgba(255, 237, 132, 1) 98%
+  // );
+  * {
+    -webkit-touch-callout: text !important; /* iOS Safari */
+    -webkit-user-select: text !important; /* Safari */
+    -khtml-user-select: text !important; /* Konqueror HTML */
+    -moz-user-select: text !important; /* Old versions of Firefox */
+    -ms-user-select: text !important; /* Internet Explorer/Edge */
+    user-select: text !important; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+  }
   color: black !important;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  // min-height: 200px;
+  animation: popin 0.5s;
+  // justify-content: center;
+  min-height: 200px;
+
+  max-height: 50vh;
+  overflow-y: scroll;
+
+  .error {
+    font-size: 1.5em;
+  }
+
+  .icon + span {
+    margin-left: 1rem;
+  }
 
   .loading-container {
     margin: 2rem 0rem;
@@ -13,12 +40,19 @@
 
   .reference {
     font-weight: bold;
+    // font-size: 1.2;
   }
 
   div.more {
     align-self: flex-end;
     .more {
-      background-color: rgb(255, 208, 0);
+      background: rgb(255, 171, 0);
+      background: linear-gradient(
+        60deg,
+        rgb(255, 217, 0) 17%,
+        rgba(255, 208, 0, 1) 66%,
+        rgba(255, 244, 0, 1) 98%
+      );
       padding: 0.5rem 1rem;
       border-radius: 1rem;
       font-weight: bold;
@@ -28,8 +62,12 @@
       display: inline-block;
       color: black;
 
+      span + span {
+        margin-left: 1em;
+      }
+
       &.clickable:hover {
-        background-color: rgb(223, 182, 0);
+        opacity: 0.8;
         // color: white;
       }
     }
@@ -39,5 +77,49 @@
     font-weight: lighter;
     font-size: 1.5em;
     margin-bottom: 0.25em;
+  }
+
+  .verse.arabic {
+    text-align: right;
+    margin-top: 1rem;
+    font-size: 1.75em;
+  }
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 100rem;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: rgb(223, 182, 0);
+    border-radius: 100rem;
+    transition-duration: 1000ms;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgb(211, 172, 0);
+  }
+  &::-webkit-scrollbar-track-piece:end {
+    background: transparent;
+    margin-bottom: 2rem;
+  }
+
+  &::-webkit-scrollbar-track-piece:start {
+    background: transparent;
+    margin-top: 2rem;
+  }
+}
+
+@media screen and (max-width: 512px) {
+  .quran-card {
+    max-height: unset;
   }
 }

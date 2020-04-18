@@ -5,7 +5,7 @@
 .prayer-card {
   margin-top: 0.25rem !important;
   margin-bottom: 0.25rem !important;
-  border-radius: 100rem;
+  border-radius: 0.5rem;
   padding: 1rem;
   font-size: 1em;
   // font-weight: bold;
@@ -14,35 +14,49 @@
   cursor: pointer;
   display: block;
   width: 100%;
-  
+  animation: none;
+  // box-shadow: none !important;
+
   -webkit-tap-highlight-color: transparent;
   transition-duration: 500ms;
 
-  &.m {
-    background-color: rgb(255, 145, 145) !important;
-  }
-  &.o {
-    background-color: rgb(57, 255, 67) !important;
-  }
-  &.d {
-    background-color: rgb(255, 194, 82) !important;
-  }
   &.n {
-    background-color: white !important;
+    box-shadow: none !important;
     color: black !important;
     &.future {
-      // background: rgb(25.5,25.5,25.5) !important;
-      // border: white 2px solid;
-      // color: white !important;
       padding: 0.6rem;
       font-size: 0.9em;
       opacity: 0.9;
-      // cursor: default;
-      // border-radius: 0.5rem;
     }
   }
   &.future {
     cursor: default;
+  }
+}
+.card.error {
+  padding: 1rem 1rem;
+  // text-align: center;
+  border-radius: 0.25rem;
+  background-color: rgb(255, 134, 134) !important;
+  color: black !important;
+  position: relative;
+  .icon {
+    margin-right: 1rem;
+  }
+  .delete {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: lighter;
+    opacity: 0.5;
+    cursor: pointer;
+    transition-duration: 200ms;
+
+    &:hover {
+      opacity: 0.75;
+    }
+    // color: white;
   }
 }
 

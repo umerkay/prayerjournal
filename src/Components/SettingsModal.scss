@@ -1,15 +1,21 @@
 .settings-modal {
   width: 400px;
   background-color: white;
-  padding: 1rem;
   padding: 2rem;
+  padding-bottom: 0rem;
   text-align: center;
   // font-weight: lighter;
+  max-height: 85vh;
+  overflow-y: auto;
+
+  display: flex;
+  // align-items: center;
 
   .heading {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
+    margin-top: 1rem;
   }
   .preference {
     margin-bottom: 0.5rem;
@@ -17,15 +23,31 @@
     width: 100%;
     gap: auto;
     // justify-content: center;
-    align-items: center;
+    // align-items: center;
     grid-template-columns: 1fr 2.5fr;
     label {
       font-size: 1.3rem;
       text-align: left;
+      margin-top: 0.5em;
     }
-    .input {
-      // margin-left: 1rem;
+    select {
       width: 100%;
+    }
+    button {
+      width: 100%;
+      &+button {
+        margin: 0px;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+  .submitContainer {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    .btn + .btn {
+      margin-left: unset;
     }
   }
 }

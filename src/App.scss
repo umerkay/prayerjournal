@@ -2,14 +2,51 @@
   margin: none;
   padding: none;
   box-sizing: border-box;
+  font-family: Brandon Grotesque, Mukta;
+  line-height: 1.4em;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 100rem;
+  padding: 0.02em 0.5em;
+}
+
+.spacer {
+  height: 3rem;
+}
+
+.ReactModal__Body--open {
+  overflow-y: hidden;
 }
 
 .primary {
-  background-color: #0051ff !important;
+  background: rgb(0, 81, 255);
+  background: linear-gradient(
+    99deg,
+    rgba(0, 81, 255, 1) 0%,
+    rgba(0, 57, 179, 1) 37%,
+    rgb(153, 0, 255) 97%
+  );
   transition-duration: 300ms;
   color: white;
-  &.clickable:hover {    
-    background-color: #003dc2 !important;
+  &.clickable:hover {
+  background: linear-gradient(
+    30deg,
+    rgba(0, 81, 255, 1) 0%,
+    rgba(0, 57, 179, 1) 37%,
+    rgb(153, 0, 255) 97%
+  );
+    // opacity: 0.95;
   }
 }
 
@@ -31,7 +68,8 @@ body {
   border-radius: 0.2rem;
   height: 1rem;
   display: block;
-  animation: growIn 1s ease-in;
+  animation: growIn 2s ease-in;
+  animation-timing-function: ease-out;
   margin: auto;
 }
 
@@ -50,34 +88,33 @@ body {
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  font-family: Brandon Grotesque;
   align-items: center;
   padding: 3rem 0rem;
 
   &.light-theme {
-    background-color: #ddd;
+    background-color: #ffffff;
     color: #111;
 
     .btn,
     .clickable {
       background-color: white;
       &:hover {
-        background-color: #eee;
+        // background-color: #eee;
       }
     }
 
     .card {
-      background-color: white;
+      background-color: #fafafa;
       color: #111;
-      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
       transition-duration: 300ms;
 
       &:hover {
-        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
       }
 
       .heading {
-        background-color: #eee;
+        background-color: #f0f0f0;
         color: #111;
       }
     }
@@ -97,11 +134,11 @@ body {
     .card {
       background-color: #111;
       color: white;
-      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+      box-shadow: 0px 0px 3px 1px rgba(255, 255, 255, 0.2);
       transition-duration: 300ms;
-      
+
       &:hover {
-        box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.5);
+        box-shadow: 0px 0px 6px 0px rgba(255, 255, 255, 0.5);
       }
 
       .heading {
@@ -157,11 +194,11 @@ body {
     padding-top: 0rem;
     .main {
       padding-bottom: 5rem !important;
-      margin-top: 50vh !important;
+      margin-top: 1rem !important;
     }
     .main,
     .side {
-      width: auto;
+      width: 100%;
       padding: 0.5rem;
       margin-right: 0rem;
       background-color: inherit;
@@ -169,6 +206,10 @@ body {
       padding-bottom: 0.5rem;
       // border-radius: 1rem;
     }
+  }
+
+  .only-desktop {
+    display: none !important;
   }
 
   #header {
@@ -182,9 +223,11 @@ body {
   }
 
   .modal {
-    width: 90% !important;
+    width: 95vw !important;
     // border-radius: 0rem !important;
     min-height: 50vh !important;
+    max-height: 85vh;
+    overflow-y: auto;
   }
 
   .clock {
@@ -193,25 +236,52 @@ body {
 }
 
 .modal {
-  border-radius: 2rem;
+  border-radius: 0.5rem;
   position: absolute;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   top: 50%;
   min-height: 50vh;
   outline: none;
-  animation: popin 0.1s;
+  animation: modal-popin 0.2s;
+  animation-timing-function: ease-out;
   box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.3);
+  * {
+    // animation-delay: 0.1s !important;
+  }
 }
 
-@keyframes popin {
+@keyframes modal-popin {
   from {
     opacity: 0;
+    // scale: 0.8;
     transform: translateX(-50%) translateY(-50%) scale(0.8);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-50%) scale(1.05);
   }
   to {
     opacity: 1;
     transform: translateX(-50%) translateY(-50%) scale(1);
+  }
+}
+@keyframes popin {
+  from {
+    opacity: 0;
+    // transform: scale(0.8);
+  }
+  5% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  // 80% {
+  //   opacity: 1;
+  //   transform: scale(1.05);
+  // }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -222,13 +292,14 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 3;
 }
 
 .card {
-  background-color: white;
   border-radius: 1.25rem;
   padding: 2rem;
   text-align: left;
+  animation: popin 0.3s;
 
   &.clock {
     display: block;
@@ -253,17 +324,71 @@ body {
   outline: none;
   font-size: 1em;
   width: 60%;
+  background-color: white;
+  animation: popin 0.25s forwards;
+  opacity: 0;
 }
 
 .btn {
   font-size: 1.1em;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2rem;
   border-radius: 100rem;
   transition-duration: 300ms;
+  background-color: #eaeaea;
   &.dormant:hover {
-    background-color: initial;
+    cursor: initial;
   }
-  & + button {
+  & + .btn {
     margin-left: 1rem;
   }
+}
+
+.btn {
+  .icon {
+    height: 100%;
+    transition: padding 200ms;
+    padding: 0.1rem;
+  }
+  &.clickable:hover {
+    .icon {
+      padding: 0rem;
+    }
+  }
+}
+
+.m {
+  background: rgb(213, 80, 80);
+  background: linear-gradient(
+    28deg,
+    rgba(213, 80, 80, 1) 0%,
+    rgba(212, 71, 81, 1) 37%,
+    rgba(255, 0, 0, 1) 87%
+  );
+}
+.o, .ex {
+  background: rgb(82, 210, 0);
+  background: linear-gradient(
+    28deg,
+    rgba(82, 210, 0, 1) 0%,
+    rgba(57, 210, 13, 1) 37%,
+    rgba(0, 255, 8, 1) 87%
+  );
+}
+.d {
+  background: rgb(255, 235, 0);
+  background: linear-gradient(
+    99deg,
+    rgba(255, 235, 0, 1) 0%,
+    rgba(255, 188, 0, 1) 37%,
+    rgba(255, 218, 0, 1) 87%
+  );
+}
+.n {
+  background: rgb(214, 214, 214);
+  background: linear-gradient(
+    99deg,
+    rgb(230, 230, 230) 0%,
+    rgb(245, 245, 245) 37%,
+    rgb(230, 230, 230) 87%
+  );
 }
