@@ -11,7 +11,7 @@
     "@testing-library/user-event": "^7.2.1",
     "country-state-city": "^1.0.4",
     "json-2-csv": "^3.6.2",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-live-clock": "^4.0.3",
